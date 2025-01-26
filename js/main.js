@@ -2465,33 +2465,6 @@ window.addEventListener("load", () => {
 
 //  Bihu end
 
-//404 page start
-// Function to check if the URL exists in your valid routes
-function isValidRoute(path) {
-  // Add your valid routes here
-  const validRoutes = ["/", "/home", "/about", "/contact"];
-
-  return validRoutes.includes(path);
-}
-
-// Function to handle 404 redirects
-function handle404() {
-  const currentPath = window.location.pathname;
-
-  // Check if the current path is valid
-  if (!isValidRoute(currentPath)) {
-    // Redirect to 404 page
-    window.location.href = "page/404.html";
-  }
-}
-
-// Run the check when the page loads
-window.addEventListener("load", handle404);
-
-// Also handle popstate events for browser navigation
-window.addEventListener("popstate", handle404);
-
-//404 page end
 
 // Disable text selection
 document.addEventListener("selectstart", function (e) {
