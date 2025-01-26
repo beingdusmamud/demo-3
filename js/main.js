@@ -1160,41 +1160,37 @@ class GallerySlider {
     this.currentSlide = 0;
     this.slides = [
       {
-        image: "/assets/chirang-polytechnic.jpg",
+        image: "assets/chirang-polytechnic.jpg",
         title: "Chirang Polytechnic",
         description:
           "Chirang Polytechnic's main building under a vibrant evening sky.",
       },
       {
-        image: "/assets/college-entrance.jpg",
+        image: "assets/college-entrance.jpg",
         title: "College Entrance",
         description: "The welcoming gate of Chirang Polytechnic",
       },
       {
-        image: "/assets/moment.jpg",
+        image: "assets/moment.jpg",
         title: "Moment",
         description: "A heartfelt memory with Mimli Ma'am",
       },
       {
-        image: "/assets/end-semester-presentation.jpg",
+        image: "assets/end-semester-presentation.jpg",
         title: "End-Sem PPT",
         description: "During the professional practice session.",
       },
       {
-        image: "/assets/hands-on-learning.jpg",
+        image: "assets/hands-on-learning.jpg",
         title: "Learning",
         description: "Participating in a lab experiment under guidance.",
       },
       {
-        image: "/assets/internship.jpg",
+        image: "assets/internship.jpg",
         title: "Internship",
         description: "At N.B NRF Railway.",
       },
-      {
-        image: "hhhh",
-        title: "gggg",
-        description: "yyyy",
-      },
+      
     ];
 
     this.track = document.getElementById("galleryTrack");
@@ -1402,7 +1398,7 @@ document.body.appendChild(popup);
 
 // Contact button handler
 function handleContact() {
-  window.location.href = "/pages/contact.html"; // Replace with your contact page URL
+  window.location.href = "page/contact.html"; // Replace with your contact page URL
 }
 
 // Function to show popup and overlay
@@ -2485,7 +2481,7 @@ function handle404() {
   // Check if the current path is valid
   if (!isValidRoute(currentPath)) {
     // Redirect to 404 page
-    window.location.href = "/pages/404.html";
+    window.location.href = "page/404.html";
   }
 }
 
