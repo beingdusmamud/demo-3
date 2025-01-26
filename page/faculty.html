@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faculty | Electrical Engineering Department</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Base Variables */
+      :root {
+        --primary-bg: #ffffff;
+        --secondary-bg: #f8f9fa;
+        --accent-bg: #e9ecef;
+        --primary-text: #2c3e50;
+        --secondary-text: #495057;
+        --accent-color: #b8860b;
+        --gold: #daa520;
+        --silver: #c0c0c0;
+        --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --border-color: #e0e0e0;
+        --transition-normal: 0.3s;
+      }
+
+      [data-theme="dark"] {
+        --primary-bg: #121212;
+        --secondary-bg: #1e1e1e;
+        --accent-bg: #282828;
+        --primary-text: #ffffff;
+        --secondary-text: #e0e0e0;
+        --accent-color: #ffd700;
+        --border-color: #333333;
+      }
+
+      /* Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: var(--primary-bg);
+        color: var(--primary-text);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* Department Header */
+      .department-header {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://source.unsplash.com/1600x400/?university,engineering")
+            center/cover;
+        padding: 4rem 0;
+        color: #fff;
+        text-align: center;
+        position: relative;
+      }
+
+      .department-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .department-stats {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 2rem;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--accent-color);
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+      }
+
+      /* Faculty Filters */
+      .faculty-filters {
+        background: var(--secondary-bg);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--card-shadow);
+        margin-bottom: 2rem;
+      }
+
+      .filter-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 0.5rem 1.5rem;
+        border: none;
+        background: var(--accent-bg);
+        color: var(--primary-text);
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all var(--transition-normal);
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--accent-color);
+        color: #fff;
+      }
+
+      /* Faculty Grid */
+      .faculty-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 2rem 0;
+      }
+
+      .faculty-card {
+        background: var(--secondary-bg);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform var(--transition-normal);
+        box-shadow: var(--card-shadow);
+      }
+
+      .faculty-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .faculty-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-bottom: 3px solid var(--accent-color);
+      }
+
+      .faculty-info {
+        padding: 1.5rem;
+      }
+
+      .faculty-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary-text);
+      }
+
+      .faculty-position {
+        color: var(--accent-color);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .faculty-details {
+        margin-bottom: 1rem;
+      }
+
+      .detail-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--secondary-text);
+        font-size: 0.9rem;
+      }
+
+      .faculty-interests {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .interest-tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: var(--accent-bg);
+        color: var(--primary-text);
+        border-radius: 15px;
+        font-size: 0.8rem;
+        margin: 0.25rem;
+      }
+
+      .faculty-social {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .social-link {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: var(--accent-bg);
+        color: var(--primary-text);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: all var(--transition-normal);
+      }
+
+      .social-link:hover {
+        background: var(--accent-color);
+        color: #fff;
+        transform: translateY(-3px);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 1rem;
+        }
+
+        .department-title {
+          font-size: 2rem;
+        }
+
+        .department-stats {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .faculty-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-in {
+        animation: fadeIn 0.5s ease-out forwards;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Department Header -->
+    <header class="department-header">
+      <div class="container">
+        <h1 class="department-title">Department of Electrical Engineering</h1>
+        <p>Excellence in Education and Research</p>
+        <div class="department-stats">
+          <div class="stat-item">
+            <div class="stat-number">25+</div>
+            <div class="stat-label">Faculty Members</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Research Labs</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Students</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Faculty Filters -->
+    <section class="faculty-filters">
+      <div class="container">
+        <div class="filter-container">
+          <button class="filter-btn active">All Faculty</button>
+          <button class="filter-btn">Professors</button>
+          <button class="filter-btn">Associate Professors</button>
+          <button class="filter-btn">Assistant Professors</button>
+          <button class="filter-btn">Research Faculty</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faculty Grid -->
+    <section class="faculty-section">
+      <div class="container">
+        <div class="faculty-grid">
+          <!-- Faculty Card 1 -->
+          <div class="faculty-card animate-in">
+            <img
+              src="https://source.unsplash.com/800x1000/?professor,man"
+              alt="Dr. James Wilson"
+              class="faculty-image"
+            />
+            <div class="faculty-info">
+              <h3 class="faculty-name">Dr. James Wilson</h3>
+              <div class="faculty-position">Professor & Department Head</div>
+              <div class="faculty-details">
+                <div class="detail-item">
+                  <i class="fas fa-graduation-cap"></i>
+                  <span>Ph.D., MIT</span>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-envelope"></i>
+                  <span>j.wilson@duscode.com</span>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-phone"></i>
+                  <span>+1 234-567-8900</span>
+                </div>
+              </div>
+              <div class="faculty-interests">
+                <span class="interest-tag">Power Systems</span>
+                <span class="interest-tag">Smart Grid</span>
+                <span class="interest-tag">Renewable Energy</span>
+              </div>
+              <div class="faculty-social">
+                <a href="#" class="social-link"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+                <a href="#" class="social-link"
+                  ><i class="fab fa-google-scholar"></i
+                ></a>
+                <a href="#" class="social-link"
+                  ><i class="fab fa-researchgate"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Faculty Card 2 -->
+          <div class="faculty-card animate-in">
+            <img
+              src="https://source.unsplash.com/800x1000/?professor,woman"
+              alt="Dr. Sarah Chen"
+              class="faculty-image"
+            />
+            <div class="faculty-info">
+              <h3 class="faculty-name">Dr. Sarah Chen</h3>
+              <div class="faculty-position">Associate Professor</div>
+              <div class="faculty-details">
+                <div class="detail-item">
+                  <i class="fas fa-graduation-cap"></i>
+                  <span>Ph.D., Stanford University</span>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-envelope"></i>
+                  <span>s.chen@duscode.com</span>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-phone"></i>
+                  <span>+1 234-567-8901</span>
+                </div>
+              </div>
+              <div class="faculty-interests">
+                <span class="interest-tag">Control Systems</span>
+                <span class="interest-tag">Robotics</span>
+                <span class="interest-tag">AI</span>
+              </div>
+              <div class="faculty-social">
+                <a href="#" class="social-link"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+                <a href="#" class="social-link"
+                  ><i class="fab fa-google-scholar"></i
+                ></a>
+                <a href="#" class="social-link"
+                  ><i class="fab fa-researchgate"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add more faculty cards as needed -->
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Filter Functionality
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const facultyCards = document.querySelectorAll(".faculty-card");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active class from all buttons
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+          // Add active class to clicked button
+          button.classList.add("active");
+
+          // Filter logic here
+          const filterValue = button.textContent.toLowerCase();
+          facultyCards.forEach((card) => {
+            const position = card
+              .querySelector(".faculty-position")
+              .textContent.toLowerCase();
+            if (
+              filterValue === "all faculty" ||
+              position.includes(filterValue)
+            ) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Animation on Scroll
+      function animateOnScroll() {
+        const elements = document.querySelectorAll(".animate-in");
+        elements.forEach((element) => {
+          const elementTop = element.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          if (elementTop < windowHeight - 50) {
+            element.style.opacity = "1";
+            element.style.transform = "translateY(0)";
+          }
+        });
+      }
+
+      window.addEventListener("scroll", animateOnScroll);
+      window.addEventListener("load", animateOnScroll);
+    </script>
+  </body>
+</html>

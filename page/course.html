@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electrical Engineering Courses | DUS Calendar</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Base Variables */
+      :root {
+        --primary-bg: #ffffff;
+        --secondary-bg: #f8f9fa;
+        --accent-bg: #e9ecef;
+        --primary-text: #2c3e50;
+        --secondary-text: #495057;
+        --accent-color: #b8860b;
+        --gold: #daa520;
+        --silver: #c0c0c0;
+        --success: #2e7d32;
+        --error: #c62828;
+        --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --border-color: #e0e0e0;
+        --transition-normal: 0.3s;
+        --gradient-accent: linear-gradient(
+          135deg,
+          var(--gold),
+          var(--accent-color)
+        );
+      }
+
+      [data-theme="dark"] {
+        --primary-bg: #121212;
+        --secondary-bg: #1e1e1e;
+        --accent-bg: #282828;
+        --primary-text: #ffffff;
+        --secondary-text: #e0e0e0;
+        --accent-color: #ffd700;
+        --gold: #ffb300;
+        --silver: #9e9e9e;
+        --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        --border-color: #333333;
+      }
+
+      /* Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: var(--primary-bg);
+        color: var(--primary-text);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: var(--gradient-accent);
+        padding: 4rem 0;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("https://source.unsplash.com/1600x900/?electronics,engineering")
+          center/cover;
+        opacity: 0.2;
+        z-index: 0;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+      }
+
+      .hero-title {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* Course Navigation */
+      .course-nav {
+        background: var(--secondary-bg);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--card-shadow);
+      }
+
+      .nav-list {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-link {
+        color: var(--primary-text);
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        transition: all var(--transition-normal);
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        background: var(--accent-color);
+        color: #fff;
+      }
+
+      /* Course Sections */
+      .section {
+        padding: 4rem 0;
+      }
+
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        color: var(--primary-text);
+      }
+
+      /* Course Cards Grid */
+      .course-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .course-card {
+        background: var(--secondary-bg);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform var(--transition-normal);
+        box-shadow: var(--card-shadow);
+      }
+
+      .course-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .course-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .course-content {
+        padding: 1.5rem;
+      }
+
+      .course-tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: var(--accent-color);
+        color: #fff;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      .course-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary-text);
+      }
+
+      .course-desc {
+        color: var(--secondary-text);
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .course-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .course-duration {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--secondary-text);
+        font-size: 0.9rem;
+      }
+
+      /* Skills Section */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .skill-card {
+        background: var(--secondary-bg);
+        padding: 1.5rem;
+        border-radius: 10px;
+        text-align: center;
+        transition: all var(--transition-normal);
+      }
+
+      .skill-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--card-shadow);
+      }
+
+      .skill-icon {
+        font-size: 2.5rem;
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+      }
+
+      .skill-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary-text);
+      }
+
+      .skill-desc {
+        color: var(--secondary-text);
+        font-size: 0.9rem;
+      }
+
+      /* Progress Indicator */
+      .progress-bar {
+        height: 6px;
+        background: var(--accent-bg);
+        border-radius: 3px;
+        margin-top: 1rem;
+        overflow: hidden;
+      }
+
+      .progress {
+        height: 100%;
+        background: var(--accent-color);
+        width: 0;
+        transition: width 1s ease-in-out;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 1rem;
+        }
+
+        .hero-title {
+          font-size: 2rem;
+        }
+
+        .nav-list {
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .course-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Animation Classes */
+      .fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-content">
+        <h1 class="hero-title">Electrical Engineering</h1>
+        <p class="hero-subtitle">
+          Discover the power of innovation through our comprehensive electrical
+          engineering curriculum
+        </p>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="course-nav">
+      <div class="container">
+        <ul class="nav-list">
+          <li>
+            <a href="#core-courses" class="nav-link active">Core Courses</a>
+          </li>
+          <li><a href="#electives" class="nav-link">Electives</a></li>
+          <li><a href="#labs" class="nav-link">Laboratory</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Core Courses Section -->
+    <section id="core-courses" class="section">
+      <div class="container">
+        <h2 class="section-title">Core Courses</h2>
+        <div class="course-grid">
+          <!-- Course Card 1 -->
+          <div class="course-card fade-in">
+            <img
+              src="https://source.unsplash.com/800x600/?circuit"
+              alt="Circuit Analysis"
+              class="course-image"
+            />
+            <div class="course-content">
+              <span class="course-tag">Core</span>
+              <h3 class="course-title">Circuit Analysis</h3>
+              <p class="course-desc">
+                Learn fundamental principles of electrical circuits, including
+                DC and AC analysis.
+              </p>
+              <div class="course-meta">
+                <span class="course-duration">
+                  <i class="fas fa-clock"></i>
+                  16 Weeks
+                </span>
+                <span class="course-credits">4 Credits</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course Card 2 -->
+          <div class="course-card fade-in">
+            <img
+              src="https://source.unsplash.com/800x600/?electromagnetics"
+              alt="Electromagnetics"
+              class="course-image"
+            />
+            <div class="course-content">
+              <span class="course-tag">Core</span>
+              <h3 class="course-title">Electromagnetics</h3>
+              <p class="course-desc">
+                Study electromagnetic fields and waves in various engineering
+                applications.
+              </p>
+              <div class="course-meta">
+                <span class="course-duration">
+                  <i class="fas fa-clock"></i>
+                  14 Weeks
+                </span>
+                <span class="course-credits">3 Credits</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course Card 3 -->
+          <div class="course-card fade-in">
+            <img
+              src="https://source.unsplash.com/800x600/?electronics"
+              alt="Digital Electronics"
+              class="course-image"
+            />
+            <div class="course-content">
+              <span class="course-tag">Core</span>
+              <h3 class="course-title">Digital Electronics</h3>
+              <p class="course-desc">
+                Master digital logic design and modern electronic systems.
+              </p>
+              <div class="course-meta">
+                <span class="course-duration">
+                  <i class="fas fa-clock"></i>
+                  15 Weeks
+                </span>
+                <span class="course-credits">4 Credits</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+          <!-- Skill Card 1 -->
+          <div class="skill-card fade-in">
+            <i class="fas fa-microchip skill-icon"></i>
+            <h3 class="skill-title">Circuit Design</h3>
+            <p class="skill-desc">
+              Master analog and digital circuit design principles
+            </p>
+            <div class="progress-bar">
+              <div class="progress" style="width: 90%"></div>
+            </div>
+          </div>
+
+          <!-- Skill Card 2 -->
+          <div class="skill-card fade-in">
+            <i class="fas fa-code skill-icon"></i>
+            <h3 class="skill-title">Programming</h3>
+            <p class="skill-desc">C++, Python, and MATLAB programming</p>
+            <div class="progress-bar">
+              <div class="progress" style="width: 85%"></div>
+            </div>
+          </div>
+
+          <!-- Skill Card 3 -->
+          <div class="skill-card fade-in">
+            <i class="fas fa-project-diagram skill-icon"></i>
+            <h3 class="skill-title">System Design</h3>
+            <p class="skill-desc">Complete system design and integration</p>
+            <div class="progress-bar">
+              <div class="progress" style="width: 80%"></div>
+            </div>
+          </div>
+
+          <!-- Skill Card 4 -->
+          <div class="skill-card fade-in">
+            <i class="fas fa-tools skill-icon"></i>
+            <h3 class="skill-title">Lab Equipment</h3>
+            <p class="skill-desc">Proficiency in using electrical equipment</p>
+            <div class="progress-bar">
+              <div class="progress" style="width: 95%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Theme Toggle
+      const themeToggle = document.getElementById("themeToggle");
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          document.documentElement.setAttribute(
+            "data-theme",
+            document.documentElement.getAttribute("data-theme") === "dark"
+              ? "light"
+              : "dark"
+          );
+        });
+      }
+
+      // Smooth Scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Animation on Scroll
+      function animateOnScroll() {
+        const elements = document.querySelectorAll(".fade-in");
+        elements.forEach((element) => {
+          const elementTop = element.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          if (elementTop < windowHeight - 50) {
+            element.style.opacity = "1";
+            element.style.transform = "translateY(0)";
+          }
+        });
+      }
+
+      window.addEventListener("scroll", animateOnScroll);
+      window.addEventListener("load", animateOnScroll);
+
+      // Progress Bar Animation
+      function animateProgress() {
+        const bars = document.querySelectorAll(".progress");
+        bars.forEach((bar) => {
+          const width = bar.style.width;
+          bar.style.width = "0";
+          setTimeout(() => {
+            bar.style.width = width;
+          }, 100);
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", animateProgress);
+    </script>
+  </body>
+</html>

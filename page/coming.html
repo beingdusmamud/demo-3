@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coming Soon | DUS College</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary-bg: #ffffff;
+        --secondary-bg: #f8f9fa;
+        --primary-text: #2c3e50;
+        --secondary-text: #495057;
+        --accent-color: #b8860b;
+        --success-color: #28a745;
+        --error-color: #dc3545;
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        line-height: 1.6;
+        color: var(--primary-text);
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* Background Animation */
+      .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(45deg, #f6f6f6, #ffffff);
+        overflow: hidden;
+      }
+
+      .particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .particle {
+        position: absolute;
+        background: var(--accent-color);
+        border-radius: 50%;
+        opacity: 0.1;
+        animation: float 15s infinite linear;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(0deg);
+        }
+        100% {
+          transform: translateY(-100vh) rotate(360deg);
+        }
+      }
+
+      /* Main Content */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .content {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        animation: fadeIn 1s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .logo {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 2rem;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .title {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(
+          45deg,
+          var(--accent-color),
+          var(--primary-text)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .subtitle {
+        color: var(--secondary-text);
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Countdown Timer */
+      .countdown {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .countdown-item {
+        text-align: center;
+      }
+
+      .countdown-value {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--accent-color);
+        background: var(--secondary-bg);
+        padding: 1rem 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        min-width: 120px;
+        display: inline-block;
+        margin-bottom: 0.5rem;
+      }
+
+      .countdown-label {
+        font-size: 0.9rem;
+        color: var(--secondary-text);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Notification Form */
+      .notification-form {
+        max-width: 500px;
+        margin: 0 auto 2rem;
+      }
+
+      .form-group {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .email-input {
+        flex: 1;
+        padding: 1rem 1.5rem;
+        border: 2px solid var(--secondary-bg);
+        border-radius: 50px;
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .email-input:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
+      }
+
+      .submit-btn {
+        padding: 1rem 2rem;
+        background: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .submit-btn:hover {
+        background: #9e7609;
+        transform: translateY(-2px);
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 6px;
+        background: var(--secondary-bg);
+        border-radius: 3px;
+        margin-bottom: 2rem;
+        overflow: hidden;
+      }
+
+      .progress {
+        width: 75%;
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent-color), var(--gold));
+        border-radius: 3px;
+        animation: progress 2s ease-out;
+      }
+
+      @keyframes progress {
+        from {
+          width: 0;
+        }
+        to {
+          width: 75%;
+        }
+      }
+
+      /* Social Links */
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--secondary-bg);
+        color: var(--primary-text);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .social-link:hover {
+        background: var(--accent-color);
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      /* Success/Error Messages */
+      .message {
+        padding: 1rem;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        display: none;
+      }
+
+      .success {
+        background: var(--success-color);
+        color: white;
+      }
+
+      .error {
+        background: var(--error-color);
+        color: white;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .container {
+          padding: 1rem;
+        }
+
+        .content {
+          padding: 2rem;
+        }
+
+        .title {
+          font-size: 2rem;
+        }
+
+        .countdown {
+          gap: 1rem;
+        }
+
+        .countdown-value {
+          font-size: 2rem;
+          min-width: 80px;
+          padding: 0.8rem;
+        }
+
+        .form-group {
+          flex-direction: column;
+        }
+
+        .submit-btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background Animation -->
+    <div class="background">
+      <div class="particles" id="particles"></div>
+    </div>
+
+    <div class="container">
+      <div class="content">
+        <!-- Logo -->
+        <img src="https://via.placeholder.com/150" alt="Logo" class="logo" />
+
+        <h1 class="title">Coming Soon</h1>
+        <p class="subtitle">
+          We're working hard to bring you something amazing. Our new website is
+          under construction and will be ready soon.
+        </p>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="countdown">
+          <div class="countdown-item">
+            <div class="countdown-value" id="days">00</div>
+            <div class="countdown-label">Days</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="hours">00</div>
+            <div class="countdown-label">Hours</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="minutes">00</div>
+            <div class="countdown-label">Minutes</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="seconds">00</div>
+            <div class="countdown-label">Seconds</div>
+          </div>
+        </div>
+
+        <!-- Notification Form -->
+        <div class="notification-form">
+          <div class="message success" id="successMessage">
+            Thank you! We'll notify you when we launch.
+          </div>
+          <div class="message error" id="errorMessage">
+            Oops! Something went wrong. Please try again.
+          </div>
+
+          <div class="form-group">
+            <input
+              type="email"
+              class="email-input"
+              placeholder="Enter your email address"
+              required
+            />
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-bell"></i> Notify Me
+            </button>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Create floating particles
+      function createParticles() {
+        const particlesContainer = document.getElementById("particles");
+        const particleCount = 20;
+
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+
+          const size = Math.random() * 15 + 5;
+          particle.style.width = `${size}px`;
+          particle.style.height = `${size}px`;
+
+          particle.style.left = `${Math.random() * 100}%`;
+          particle.style.top = `${Math.random() * 100}%`;
+
+          particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+
+          particlesContainer.appendChild(particle);
+        }
+      }
+
+      // Countdown Timer
+      function updateCountdown() {
+        const launchDate = new Date("2025-03-01T00:00:00").getTime();
+        const now = new Date().getTime();
+        const distance = launchDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").textContent = days
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("hours").textContent = hours
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("minutes").textContent = minutes
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("seconds").textContent = seconds
+          .toString()
+          .padStart(2, "0");
+      }
+
+      // Form Submission
+      const form = document.querySelector(".notification-form");
+      const successMessage = document.getElementById("successMessage");
+      const errorMessage = document.getElementById("errorMessage");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = form.querySelector('input[type="email"]').value;
+
+        try {
+          // Add your email subscription logic here
+          // Simulating API call
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+
+          successMessage.style.display = "block";
+          form.reset();
+          setTimeout(() => {
+            successMessage.style.display = "none";
+          }, 3000);
+        } catch (error) {
+          errorMessage.style.display = "block";
+          setTimeout(() => {
+            errorMessage.style.display = "none";
+          }, 3000);
+        }
+      });
+
+      // Initialize
+      createParticles();
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+    </script>
+  </body>
+</html>

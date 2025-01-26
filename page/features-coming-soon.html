@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Features Coming Soon - Academic Calendar</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+      :root {
+        --primary-bg: #ffffff;
+        --secondary-bg: #f8f9fa;
+        --accent-bg: #e9ecef;
+        --primary-text: #2c3e50;
+        --secondary-text: #495057;
+        --accent-color: #b8860b;
+        --gold: #daa520;
+        --silver: #c0c0c0;
+        --success: #2e7d32;
+        --error: #c62828;
+        --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --border-color: #e0e0e0;
+        --transition-normal: 0.3s;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -1000px 0;
+        }
+        100% {
+          background-position: 1000px 0;
+        }
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        line-height: 1.6;
+        color: var(--primary-text);
+        background: var(--primary-bg);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .coming-soon-container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--container-padding-desktop);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      .hero-section {
+        text-align: center;
+        padding: 2rem 0;
+      }
+
+      .hero-title {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, var(--accent-color), var(--gold));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        padding: 0 1rem;
+        margin-top: 30px;
+        font-family: "Playfair Display", serif;
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        padding: 0 1rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        padding: 1rem;
+        width: 100%;
+      }
+
+      .features-grid p {
+        font-family: "Playfair Display", serif;
+      }
+      .feature-card {
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1.5rem;
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-color), var(--gold));
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite linear;
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+        animation: float 3s infinite ease-in-out;
+      }
+
+      .feature-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary-text);
+      }
+
+      .feature-description {
+        color: var(--secondary-text);
+        margin-bottom: 1rem;
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 6px;
+        background: var(--secondary-bg);
+        border-radius: 3px;
+        overflow: hidden;
+        margin-top: 1rem;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent-color), var(--gold));
+        border-radius: 3px;
+        transition: width 0.5s ease;
+      }
+
+      .notification-box {
+        margin: 1.5rem auto;
+        padding: 1.25rem;
+        width: calc(100% - 2rem);
+        max-width: 600px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .notification-icon {
+        font-size: 2rem;
+        color: var(--accent-color);
+      }
+
+      .action-buttons {
+        width: calc(100% - 2rem);
+        max-width: 500px;
+        margin: 1.5rem auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 1rem;
+        cursor: pointer;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        border-radius: 12px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--accent-color), var(--gold));
+        color: var(--primary-bg);
+      }
+
+      .btn-secondary {
+        background: var(--secondary-bg);
+        color: var(--primary-text);
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--card-shadow);
+      }
+
+      .newsletter-form {
+        width: calc(100% - 2rem);
+        max-width: 500px;
+        margin: 1.5rem auto;
+        padding: 0 1rem;
+      }
+
+      .newsletter-form h3 {
+        margin-bottom: 1rem;
+        color: var(--primary-text);
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 0.875rem 1.25rem;
+        font-size: 0.95rem;
+        border-radius: 12px;
+      }
+
+      .input-field:focus {
+        outline: none;
+        border-color: var(--accent-color);
+      }
+
+      /* Mobile Optimization */
+      @media (max-width: 768px) {
+        .coming-soon-container {
+          padding: var(--container-padding-mobile);
+          gap: 2rem;
+          padding: 2rem;
+          margin-top: 4rem;
+        }
+
+        .hero-section {
+          padding: 1rem 0;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+          padding: 0.5rem;
+          gap: 1rem;
+        }
+
+        .feature-card {
+          padding: 1.25rem;
+          min-height: auto;
+        }
+
+        .notification-box {
+          padding: 1rem;
+          margin: 1rem auto;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .notification-box .notification-icon {
+          margin: 0 0 0.5rem 0;
+          width: 100%;
+          text-align: center;
+        }
+
+        .newsletter-form {
+          padding: 0;
+        }
+
+        .input-group {
+          gap: 0.75rem;
+        }
+
+        .action-buttons {
+          padding: 0;
+          margin: 1rem auto;
+        }
+
+        .btn {
+          padding: 0.75rem 1.25rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="coming-soon-container">
+      <section class="hero-section">
+        <h1 class="hero-title">Exciting Features Coming Soon</h1>
+        <p class="hero-subtitle">
+          We're working on some amazing new features to enhance your academic
+          planning experience.
+        </p>
+      </section>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div>
+            <i class="feature-icon fas fa-robot"></i>
+            <h3 class="feature-title">AI Schedule Optimization</h3>
+            <p class="feature-description">
+              Smart scheduling algorithms that learn from your preferences.
+            </p>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 75%"></div>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div>
+            <i class="feature-icon fas fa-brain"></i>
+            <h3 class="feature-title">Smart Analytics</h3>
+            <p class="feature-description">
+              Advanced analytics for better academic planning decisions.
+            </p>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 60%"></div>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div>
+            <i class="feature-icon fas fa-people-arrows"></i>
+            <h3 class="feature-title">Collaborative Planning</h3>
+            <p class="feature-description">
+              Create perfect schedules with classmates and faculty.
+            </p>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 45%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notification-box">
+        <i class="notification-icon fas fa-bell"></i>
+        <div>
+          <h3>Want to be the first to know?</h3>
+          <p>Sign up for updates about new features.</p>
+        </div>
+      </div>
+
+      <form class="newsletter-form">
+        <div class="input-group">
+          <input
+            type="email"
+            class="input-field"
+            placeholder="Enter your email address"
+          />
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i>
+            Notify Me
+          </button>
+        </div>
+      </form>
+
+      <div class="action-buttons">
+        <a href="/" class="btn btn-primary">
+          <i class="fas fa-home"></i>
+          Back to Home
+        </a>
+        <a href="#" class="btn btn-secondary">
+          <i class="fas fa-headset"></i>
+          Contact Support
+        </a>
+      </div>
+    </div>
+
+    <script>
+      // Animate progress bars on scroll
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.width =
+                entry.target.getAttribute("data-progress");
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      document.querySelectorAll(".progress-fill").forEach((bar) => {
+        observer.observe(bar);
+      });
+
+      // Newsletter form submission
+      document
+        .querySelector(".newsletter-form")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
+          const email = e.target.querySelector('input[type="email"]').value;
+          if (email) {
+            alert(
+              "Thank you for subscribing! We'll keep you updated about new features."
+            );
+            e.target.reset();
+          }
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Development Team | DUS College</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary-bg: #ffffff;
+        --secondary-bg: #f8f9fa;
+        --primary-text: #2c3e50;
+        --secondary-text: #495057;
+        --accent-color: #b8860b;
+        --gold: #daa520;
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        line-height: 1.6;
+        color: var(--primary-text);
+        background: linear-gradient(135deg, #f6f6f6 0%, #ffffff 100%);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      /* Header Section */
+      .dev-header {
+        text-align: center;
+        padding: 4rem 0;
+        background: var(--primary-bg);
+        margin-bottom: 4rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .dev-title {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, var(--accent-color), var(--gold));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .dev-subtitle {
+        color: var(--secondary-text);
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Team Section */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .team-member {
+        background: var(--primary-bg);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+      }
+
+      .team-member:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .member-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+      }
+
+      .member-info {
+        padding: 1.5rem;
+      }
+
+      .member-name {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary-text);
+      }
+
+      .member-role {
+        color: var(--accent-color);
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+
+      .member-bio {
+        color: var(--secondary-text);
+        margin-bottom: 1rem;
+      }
+
+      .member-skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .skill-tag {
+        background: var(--secondary-bg);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        color: var(--primary-text);
+      }
+
+      .member-social {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-link {
+        color: var(--secondary-text);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .social-link:hover {
+        color: var(--accent-color);
+      }
+
+      /* Projects Section */
+      .projects-section {
+        margin-bottom: 4rem;
+      }
+
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        color: var(--primary-text);
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        background: var(--primary-bg);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .project-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .project-info {
+        padding: 1.5rem;
+      }
+
+      .project-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary-text);
+      }
+
+      .project-description {
+        color: var(--secondary-text);
+        margin-bottom: 1rem;
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .tech-tag {
+        background: var(--secondary-bg);
+        padding: 0.3rem 0.8rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        color: var(--primary-text);
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .project-link {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .project-link:hover {
+        color: var(--gold);
+      }
+
+      /* Technologies Section */
+      .tech-section {
+        text-align: center;
+        margin-bottom: 4rem;
+        padding: 3rem;
+        background: var(--primary-bg);
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .tech-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .tech-icon {
+        font-size: 2.5rem;
+        color: var(--accent-color);
+      }
+
+      .tech-name {
+        font-size: 0.9rem;
+        color: var(--secondary-text);
+      }
+
+      /* Contact Section */
+      .contact-section {
+        text-align: center;
+        padding: 4rem 0;
+        background: var(--secondary-bg);
+        margin-top: 4rem;
+      }
+
+      .contact-btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: var(--accent-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .contact-btn:hover {
+        background: var(--gold);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 1rem;
+        }
+
+        .dev-title {
+          font-size: 2.5rem;
+        }
+
+        .team-grid,
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .tech-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="dev-header">
+      <div class="container">
+        <h1 class="dev-title">Meet Our Development Team</h1>
+        <p class="dev-subtitle">
+          Passionate developers crafting innovative solutions for DUS College's
+          digital ecosystem
+        </p>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- Team Section -->
+      <section class="team-grid">
+        <!-- Team Member 1 -->
+        <div class="team-member">
+          <img
+            src="https://i.imgur.com/CNFgoIQ.jpeg"
+            alt="Profile Picture"
+            class="member-image"
+          />
+          <div class="member-info">
+            <h3 class="member-name">Dus Mamud</h3>
+            <p class="member-role">Lead Developer</p>
+            <p class="member-bio">
+              Full-stack developer with 1+ years of experience in technology.
+            </p>
+            <div class="member-skills">
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">Python</span>
+            </div>
+            <div class="member-social">
+              <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="team-member">
+          <img
+            src="https://via.placeholder.com/400x300"
+            alt="Profile Picture"
+            class="member-image"
+          />
+          <div class="member-info">
+            <h3 class="member-name">Kumkum Gupta</h3>
+            <p class="member-role">UI/UX Designer</p>
+            <p class="member-bio">
+              Creative designer focused on creating intuitive and accessible
+              user experiences.
+            </p>
+            <div class="member-skills">
+              <span class="skill-tag">Figma</span>
+              <span class="skill-tag">Adobe XD</span>
+              <span class="skill-tag">HTML/CSS</span>
+              <span class="skill-tag">UI Design</span>
+            </div>
+            <div class="member-social">
+              <a href="#" class="social-link"
+                ><i class="fab fa-dribbble"></i
+              ></a>
+              <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="team-member">
+          <img
+            src="https://via.placeholder.com/400x300"
+            alt="Profile Picture"
+            class="member-image"
+          />
+          <div class="member-info">
+            <h3 class="member-name">Kashak bhaskar</h3>
+            <p class="member-role">Backend Developer</p>
+            <p class="member-bio">
+              Database expert specializing in scalable and secure backend
+              solutions.
+            </p>
+            <div class="member-skills">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Django</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">AWS</span>
+            </div>
+            <div class="member-social">
+              <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-stack-overflow"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        x
+      </section>
+
+      <!-- Projects Section -->
+      <section class="projects-section">
+        <h2 class="section-title">Our Projects</h2>
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <img
+              src="https://via.placeholder.com/400x200"
+              alt="Project 1"
+              class="project-image"
+            />
+            <div class="project-info">
+              <h3 class="project-title">Student Portal</h3>
+              <p class="project-description">
+                Comprehensive portal for student information management and
+                course registration.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">MongoDB</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link">View Project</a>
+                <a href="#" class="project-link">Source Code</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <img
+              src="https://via.placeholder.com/400x200"
+              alt="Project 2"
+              class="project-image"
+            />
+            <div class="project-info">
+              <h3 class="project-title">Library Management</h3>
+              <p class="project-description">
+                Digital library system with book tracking and reservation
+                features.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Django</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">Bootstrap</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link">View Project</a>
+                <a href="#" class="project-link">Source Code</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card">
+            <img
+              src="https://via.placeholder.com/400x200"
+              alt="Project 3"
+              class="project-image"
+            />
+            <div class="project-info">
+              <h3 class="project-title">Course Calendar</h3>
+              <p class="project-description">
+                Interactive calendar for managing course schedules and events.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Vue.js</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">CSS Grid</span>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link">View Project</a>
+                <a href="#" class="project-link">Source Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technologies Section -->
+      <section class="tech-section">
+        <h2 class="section-title">Technologies We Use</h2>
+        <div class="tech-grid">
+          <div class="tech-item">
+            <i class="fab fa-js tech-icon"></i>
+            <span class="tech-name">JavaScript</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-react tech-icon"></i>
+            <span class="tech-name">React</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-node tech-icon"></i>
+            <span class="tech-name">Node.js</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-python tech-icon"></i>
+            <span class="tech-name">Python</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-aws tech-icon"></i>
+            <span class="tech-name">AWS</span>
+          </div>
+          <div class="tech-item">
+            <i class="fab fa-docker tech-icon"></i>
+            <span class="tech-name">Docker</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="contact-section">
+        <h2 class="section-title">Want to Work With Us?</h2>
+        <p class="dev-subtitle">
+          We're always looking for talented developers to join our team
+        </p>
+        <a href="#" class="contact-btn">Get in Touch</a>
+      </section>
+    </div>
+
+    <script>
+      // Add smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Add animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(".team-member, .project-card, .tech-item")
+        .forEach((element) => {
+          element.style.opacity = 0;
+          element.style.transform = "translateY(20px)";
+          element.style.transition = "all 0.6s ease-out";
+          observer.observe(element);
+        });
+    </script>
+  </body>
+</html>

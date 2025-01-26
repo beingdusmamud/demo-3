@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Under Construction</title>
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='gold'>A</text></svg>"
+    />
+    <link rel="stylesheet" href="/css/under-construction.css" />
+  </head>
+  <body>
+    <main class="construction-container">
+      <!-- Loading Animation -->
+      <div class="loading-animation">
+        <i class="fas fa-cog gear gear-1 fa-4x"></i>
+        <i class="fas fa-cog gear gear-2 fa-4x"></i>
+      </div>
+
+      <!-- Header -->
+      <header class="header">
+        <h1 class="header__title">Under Construction</h1>
+        <p class="header__subtitle">
+          We're building something amazing! Our new website is getting a
+          complete makeover and will be ready soon.
+        </p>
+      </header>
+
+      <!-- Progress Section -->
+      <section class="progress-section">
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+        <p>75% Complete</p>
+      </section>
+
+      <!-- Timer Grid -->
+      <section class="timer-grid">
+        <div class="timer-item">
+          <div class="timer-number" id="days">00</div>
+          <div class="timer-label">Days</div>
+        </div>
+        <div class="timer-item">
+          <div class="timer-number" id="hours">00</div>
+          <div class="timer-label">Hours</div>
+        </div>
+        <div class="timer-item">
+          <div class="timer-number" id="minutes">00</div>
+          <div class="timer-label">Minutes</div>
+        </div>
+        <div class="timer-item">
+          <div class="timer-number" id="seconds">00</div>
+          <div class="timer-label">Seconds</div>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="newsletter">
+        <h2 class="newsletter__title">Get Notified When We Launch</h2>
+        <form class="newsletter__form" id="notifyForm">
+          <input
+            type="email"
+            class="newsletter__input"
+            placeholder="Enter your email address"
+            required
+          />
+          <button type="submit" class="newsletter__button">
+            <i class="fas fa-bell"></i> Notify Me
+          </button>
+        </form>
+      </section>
+
+      <!-- Social Links @dus.infinity -->
+      <section class="social-links">
+        <a
+          href="https://github.com/dusxinfinity"
+          class="social-link"
+          aria-label="GitHub"
+        >
+          <i class="fab fa-github"></i>
+        </a>
+        <a
+          href="https://codepen.io/Dus-Infinity"
+          class="social-link"
+          aria-label="CodePen"
+        >
+          <i class="fab fa-codepen"></i>
+        </a>
+        <a
+          href="https://www.instagram.com/dus.infinity/"
+          class="social-link"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+      </section>
+    </main>
+    <script src="/js/under-construction.js"></script>
+  </body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='gold'>A</text></svg>"
+    />
+    <title>Our Development Team | Contact Us</title>
+    <link rel="stylesheet" href="/css/team.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <h1 class="header-title">Meet Our Development Team</h1>
+          <p class="header-subtitle">
+            Expert developers crafting exceptional digital experiences
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- Team Section -->
+      <section class="team-section">
+        <!-- Full Stack Developer -->
+        <div class="profile-card">
+          <div class="profile-header">
+            <img src="/assets/dus.jpg" alt="Dus Mamud" class="profile-image" />
+          </div>
+          <div class="profile-content">
+            <h2 class="profile-name">Dus Mamud</h2>
+            <div class="profile-role">Full Stack Developer</div>
+            <p class="profile-description">
+              Passionate about creating scalable web applications and solving
+              complex problems through elegant code solutions.
+            </p>
+            <div class="skills-list">
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">HTML/CSS/JS</span>
+            </div>
+            <div class="social-links">
+              <a
+                href="https://www.instagram.com/dvmx_19/"
+                target="_blank"
+                class="social-link"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://codepen.io/Dus-Mamud"
+                target="_blank"
+                class="social-link"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-codepen"></i>
+              </a>
+              <a
+                href="https://github.com/beingdusmamud"
+                target="_blank"
+                class="social-link"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Designer -->
+        <div class="profile-card">
+          <div class="profile-header">
+            <img
+              src="/assets/kum.jpg"
+              alt="Kumkum Gupta"
+              class="profile-image"
+            />
+          </div>
+          <div class="profile-content">
+            <h2 class="profile-name">Kumkum Gupta</h2>
+            <div class="profile-role">UI/UX Designer</div>
+            <p class="profile-description">
+              Creative designer focused on crafting intuitive and visually
+              appealing user experiences. (Students)
+            </p>
+            <div class="skills-list">
+              <span class="skill-tag">Figma</span>
+              <span class="skill-tag">Adobe XD</span>
+              <span class="skill-tag">UI Design</span>
+            </div>
+            <div class="social-links">
+              <a
+                href="https://www.instagram.com/__kumkum_gupta_/"
+                target="_blank"
+                class="social-link"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://codepen.io/Dus-Infinity"
+                target="_blank"
+                class="social-link"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-codepen"></i>
+              </a>
+              <a
+                href="https://github.com/dusxinfinity"
+                target="_blank"
+                class="social-link"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Form Section -->
+      <section class="contact-section">
+        <h2 class="contact-title">Get in Touch</h2>
+        <div class="success-message" id="successMessage">
+          Thank you for your message! We'll get back to you soon.
+        </div>
+        <form
+          class="contact-form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+        >
+          <input
+            type="hidden"
+            name="access_key"
+            value="0550a311-49ef-429f-abd4-bc476ebee7a5"
+          />
+          <input
+            type="hidden"
+            name="redirect"
+            value="https://web3forms.com/success"
+          />
+
+          <div class="form-group">
+            <label class="form-label" for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="subject">Subject</label>
+            <input
+              type="text"
+              class="form-control"
+              id="subject"
+              name="subject"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea
+              class="form-control"
+              id="message"
+              name="message"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="submit-button">
+            <i class="fas fa-paper-plane"></i>
+            Send Message
+          </button>
+        </form>
+      </section>
+    </div>
+
+    <script>
+      // Form handling with improved validation and feedback
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("contactForm");
+        const submitButton = document.getElementById("submitButton");
+        const successMessage = document.getElementById("successMessage");
+
+        // Function to show error message
+        function showError(inputElement, message) {
+          inputElement.classList.add("error");
+          const errorElement = inputElement.nextElementSibling;
+          errorElement.textContent = message;
+          errorElement.style.display = "block";
+        }
+
+        // Function to clear error message
+        function clearError(inputElement) {
+          inputElement.classList.remove("error");
+          const errorElement = inputElement.nextElementSibling;
+          errorElement.style.display = "none";
+        }
+
+        // Validate form fields
+        function validateField(input) {
+          clearError(input);
+
+          if (input.required && !input.value.trim()) {
+            showError(
+              input,
+              `${input.previousElementSibling.textContent} is required`
+            );
+            return false;
+          }
+
+          if (input.type === "email" && input.value) {
+            const emailRegex =
+              /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(input.value)) {
+              showError(input, "Please enter a valid email address");
+              return false;
+            }
+          }
+
+          if (input.minLength && input.value.length < input.minLength) {
+            showError(input, `Minimum ${input.minLength} characters required`);
+            return false;
+          }
+
+          return true;
+        }
+
+        // Add input event listeners for real-time validation
+        form.querySelectorAll(".form-control").forEach((input) => {
+          input.addEventListener("input", () => validateField(input));
+          input.addEventListener("blur", () => validateField(input));
+        });
+
+        // Form submission handler
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          // Validate all fields
+          let isValid = true;
+          form.querySelectorAll(".form-control").forEach((input) => {
+            if (!validateField(input)) {
+              isValid = false;
+            }
+          });
+
+          if (!isValid) return;
+
+          // Show loading state
+          submitButton.classList.add("loading");
+          submitButton.disabled = true;
+
+          try {
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+              method: "POST",
+              body: formData,
+            });
+
+            if (response.ok) {
+              // Show success message
+              successMessage.style.display = "block";
+              form.reset();
+
+              // Scroll to success message
+              successMessage.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+              });
+
+              // Hide success message after 5 seconds
+              setTimeout(() => {
+                successMessage.style.display = "none";
+              }, 5000);
+            } else {
+              throw new Error("Form submission failed");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            alert(
+              "There was an error submitting the form. Please try again later."
+            );
+          } finally {
+            // Remove loading state
+            submitButton.classList.remove("loading");
+            submitButton.disabled = false;
+          }
+        });
+
+        // Check for success parameter in URL
+        if (window.location.search.includes("success")) {
+          successMessage.style.display = "block";
+          setTimeout(() => {
+            successMessage.style.display = "none";
+          }, 5000);
+        }
+      });
+    </script>
+  </body>
+</html>

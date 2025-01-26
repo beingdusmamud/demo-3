@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notice Board | DUS College Updates</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary-bg: #ffffff;
+        --secondary-bg: #f8f9fa;
+        --accent-bg: #e9ecef;
+        --primary-text: #2c3e50;
+        --secondary-text: #495057;
+        --accent-color: #b8860b;
+        --gold: #daa520;
+        --success: #28a745;
+        --warning: #ffc107;
+        --danger: #dc3545;
+        --info: #17a2b8;
+        --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --border-color: #e0e0e0;
+        --transition: all 0.3s ease;
+      }
+
+      [data-theme="dark"] {
+        --primary-bg: #121212;
+        --secondary-bg: #1e1e1e;
+        --accent-bg: #282828;
+        --primary-text: #ffffff;
+        --secondary-text: #e0e0e0;
+        --border-color: #333333;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: var(--primary-bg);
+        color: var(--primary-text);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* Header Styles */
+      .notice-header {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://source.unsplash.com/1600x400/?university,notice")
+            center/cover;
+        padding: 3rem 0;
+        color: #fff;
+        text-align: center;
+        position: relative;
+      }
+
+      .notice-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Search Bar */
+      .search-section {
+        background: var(--secondary-bg);
+        padding: 1.5rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--card-shadow);
+      }
+
+      .search-container {
+        display: flex;
+        gap: 1rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .search-input {
+        flex: 1;
+        padding: 0.75rem 1.5rem;
+        border: 2px solid var(--border-color);
+        border-radius: 25px;
+        font-size: 1rem;
+        background: var(--primary-bg);
+        color: var(--primary-text);
+        transition: var(--transition);
+      }
+
+      .search-input:focus {
+        outline: none;
+        border-color: var(--accent-color);
+      }
+
+      /* Filter Chips */
+      .filter-chips {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin: 1rem auto;
+        max-width: 800px;
+      }
+
+      .filter-chip {
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        background: var(--accent-bg);
+        color: var(--primary-text);
+        cursor: pointer;
+        transition: var(--transition);
+        border: none;
+        font-size: 0.9rem;
+      }
+
+      .filter-chip:hover,
+      .filter-chip.active {
+        background: var(--accent-color);
+        color: #fff;
+      }
+
+      /* Notice Cards */
+      .notices-grid {
+        display: grid;
+        gap: 1.5rem;
+        padding: 2rem 0;
+      }
+
+      .notice-card {
+        background: var(--secondary-bg);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: var(--transition);
+        position: relative;
+        border-left: 4px solid var(--accent-color);
+      }
+
+      .notice-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .notice-content {
+        padding: 1.5rem;
+      }
+
+      .notice-category {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .category-academic {
+        background: var(--info);
+        color: #fff;
+      }
+      .category-exam {
+        background: var(--danger);
+        color: #fff;
+      }
+      .category-event {
+        background: var(--success);
+        color: #fff;
+      }
+      .category-general {
+        background: var(--warning);
+        color: #000;
+      }
+
+      .notice-date {
+        font-size: 0.9rem;
+        color: var(--secondary-text);
+        margin-bottom: 0.5rem;
+      }
+
+      .notice-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        color: var(--primary-text);
+      }
+
+      .notice-desc {
+        color: var(--secondary-text);
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+      }
+
+      .notice-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .notice-attachment {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--accent-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .notice-attachment:hover {
+        text-decoration: underline;
+      }
+
+      .notice-meta {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.9rem;
+        color: var(--secondary-text);
+      }
+
+      /* Pagination */
+      .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 2rem 0;
+      }
+
+      .page-btn {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--secondary-bg);
+        color: var(--primary-text);
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .page-btn:hover,
+      .page-btn.active {
+        background: var(--accent-color);
+        color: #fff;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 1rem;
+        }
+
+        .notice-header h1 {
+          font-size: 2rem;
+        }
+
+        .search-container {
+          flex-direction: column;
+        }
+
+        .filter-chips {
+          justify-content: center;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-in {
+        animation: fadeIn 0.5s ease-out forwards;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Notice Header -->
+    <header class="notice-header">
+      <div class="container">
+        <h1 class="notice-title">Notice Board</h1>
+        <p>Stay updated with the latest announcements and updates</p>
+      </div>
+    </header>
+
+    <!-- Search Section -->
+    <section class="search-section">
+      <div class="container">
+        <div class="search-container">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search notices..."
+          />
+        </div>
+        <div class="filter-chips">
+          <button class="filter-chip active">All</button>
+          <button class="filter-chip">Academic</button>
+          <button class="filter-chip">Examination</button>
+          <button class="filter-chip">Events</button>
+          <button class="filter-chip">General</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notices Grid -->
+    <section class="notices-section">
+      <div class="container">
+        <div class="notices-grid">
+          <!-- Notice Card 1 -->
+          <div class="notice-card animate-in">
+            <div class="notice-content">
+              <span class="notice-category category-academic">Academic</span>
+              <div class="notice-date">
+                <i class="far fa-calendar-alt"></i>
+                January 21, 2025
+              </div>
+              <h3 class="notice-title">Semester Registration Deadline</h3>
+              <p class="notice-desc">
+                Last date for semester registration has been extended. All
+                students must complete their registration by January 25, 2025.
+              </p>
+              <div class="notice-footer">
+                <a href="#" class="notice-attachment">
+                  <i class="fas fa-file-pdf"></i>
+                  Registration Guidelines.pdf
+                </a>
+                <div class="notice-meta">
+                  <span><i class="far fa-eye"></i> 245</span>
+                  <span><i class="far fa-clock"></i> 2 days ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notice Card 2 -->
+          <div class="notice-card animate-in">
+            <div class="notice-content">
+              <span class="notice-category category-exam">Examination</span>
+              <div class="notice-date">
+                <i class="far fa-calendar-alt"></i>
+                January 20, 2025
+              </div>
+              <h3 class="notice-title">Mid-Semester Examination Schedule</h3>
+              <p class="notice-desc">
+                Mid-semester examinations will commence from February 1, 2025.
+                Detailed schedule and seating arrangements are attached.
+              </p>
+              <div class="notice-footer">
+                <a href="#" class="notice-attachment">
+                  <i class="fas fa-file-pdf"></i>
+                  Exam Schedule.pdf
+                </a>
+                <div class="notice-meta">
+                  <span><i class="far fa-eye"></i> 567</span>
+                  <span><i class="far fa-clock"></i> 3 days ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notice Card 3 -->
+          <div class="notice-card animate-in">
+            <div class="notice-content">
+              <span class="notice-category category-event">Event</span>
+              <div class="notice-date">
+                <i class="far fa-calendar-alt"></i>
+                January 19, 2025
+              </div>
+              <h3 class="notice-title">Annual Technical Symposium</h3>
+              <p class="notice-desc">
+                Register for TechFest 2025! Exciting events, workshops, and
+                prizes worth ₹1,00,000 to be won.
+              </p>
+              <div class="notice-footer">
+                <a href="#" class="notice-attachment">
+                  <i class="fas fa-file-pdf"></i>
+                  Event Brochure.pdf
+                </a>
+                <div class="notice-meta">
+                  <span><i class="far fa-eye"></i> 789</span>
+                  <span><i class="far fa-clock"></i> 4 days ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn">...</button>
+          <button class="page-btn">10</button>
+          <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Search Functionality
+      const searchInput = document.querySelector(".search-input");
+      const noticeCards = document.querySelectorAll(".notice-card");
+
+      searchInput.addEventListener("input", (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        noticeCards.forEach((card) => {
+          const title = card
+            .querySelector(".notice-title")
+            .textContent.toLowerCase();
+          const desc = card
+            .querySelector(".notice-desc")
+            .textContent.toLowerCase();
+
+          if (title.includes(searchTerm) || desc.includes(searchTerm)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+
+      // Filter Functionality
+      const filterChips = document.querySelectorAll(".filter-chip");
+
+      filterChips.forEach((chip) => {
+        chip.addEventListener("click", () => {
+          // Remove active class from all chips
+          filterChips.forEach((c) => c.classList.remove("active"));
+          // Add active class to clicked chip
+          chip.classList.add("active");
+
+          const filterValue = chip.textContent.toLowerCase();
+          noticeCards.forEach((card) => {
+            const category = card
+              .querySelector(".notice-category")
+              .textContent.toLowerCase();
+            if (filterValue === "all" || category === filterValue) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Animation on Scroll
+      function animateOnScroll() {
+        const elements = document.querySelectorAll(".animate-in");
+        elements.forEach((element) => {
+          const elementTop = element.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          if (elementTop < windowHeight - 50) {
+            element.style.opacity = "1";
+            element.style.transform = "translateY(0)";
+          }
+        });
+      }
+
+      window.addEventListener("scroll", animateOnScroll);
+      window.addEventListener("load", animateOnScroll);
+    </script>
+  </body>
+</html>
